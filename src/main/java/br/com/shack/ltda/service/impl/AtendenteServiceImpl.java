@@ -7,8 +7,9 @@ import br.com.shack.ltda.model.AtendenteModel;
 import br.com.shack.ltda.repository.AtendenteRepository;
 import br.com.shack.ltda.service.AtendenteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AtendenteServiceImpl implements AtendenteService{
     private AtendenteRepository atendenteRepository;
@@ -27,14 +28,18 @@ public class AtendenteServiceImpl implements AtendenteService{
     }
 
     @Override
-    public AtendenteDTO buscaAtendestes(AtendenteDTO atendenteDTO) {
-
-    return null;
+    public List<AtendenteModel> buscaAtendestes(AtendenteDTO atendenteDTO) {
+        List<AtendenteModel> atendenteDTOS = atendenteRepository.findAll();
+        return atendenteDTOS.stream().map(x -> atendenteMapper.toAttendant(atendenteDTO)).collect(Collectors.toList());
     }
 
     @Override
-    public GerenteDTO novoGerente(AtendenteDTO atendenteDTO, boolean venda) {
-        return null;
+    public GerenteDTO novoGerente(AtendenteDTO atendenteDTO, boolean promocao) {
+        if (atendenteDTO.getId() == null) {
+            return atendenteMapper.toNewManager(atendenteDTO);
+        } else {
+            return atendenteMapper.toPromotedAttendant(atendenteDTO, promocao);
+        }
     }
 
     @Override
@@ -52,9 +57,6 @@ public class AtendenteServiceImpl implements AtendenteService{
         atendenteModel.setCargo(atendenteDTO.getCargo());
         atendenteModel = novoAtendente(atendenteModel);
         return atendenteMapper.toNewAttendant(atendenteModel);
-
-
-
 
     }
 

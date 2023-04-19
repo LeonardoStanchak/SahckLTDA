@@ -1,6 +1,7 @@
 package br.com.shack.ltda.mapper;
 
 import br.com.shack.ltda.dto.Atendente.AtendenteDTO;
+import br.com.shack.ltda.dto.Atendente.GerenteDTO;
 import br.com.shack.ltda.model.AtendenteModel;
 import org.springframework.stereotype.Component;
 
@@ -36,5 +37,21 @@ public class AtendenteMapper {
 
 
     }
+
+    public GerenteDTO toNewManager(AtendenteDTO atendenteDTO){
+        return GerenteDTO.builder()
+                .dto(atendenteDTO)
+                .promocao(false)
+                .build();
+    }
+
+    public GerenteDTO toPromotedAttendant(AtendenteDTO atendenteDTO, boolean promocao){
+        return GerenteDTO.builder()
+                .dto(atendenteDTO)
+                .promocao(promocao)
+                .build();
+
+    }
+
 
 }

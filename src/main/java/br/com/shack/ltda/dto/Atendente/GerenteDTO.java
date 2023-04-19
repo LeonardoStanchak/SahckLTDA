@@ -10,6 +10,6 @@ import lombok.Setter;
 public class GerenteDTO {
     private AtendenteDTO dto;
 
-    private boolean venda;
+    private boolean promocao;
 
 }

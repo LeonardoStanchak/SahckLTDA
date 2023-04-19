@@ -4,13 +4,15 @@ import br.com.shack.ltda.dto.Atendente.AtendenteDTO;
 import br.com.shack.ltda.dto.Atendente.GerenteDTO;
 import br.com.shack.ltda.model.AtendenteModel;
 
+import java.util.List;
+
 public interface AtendenteService {
 
     AtendenteModel novoAtendente(AtendenteModel atendenteModel);
 
-    AtendenteDTO buscaAtendestes(AtendenteDTO atendenteDTO);
+    List<AtendenteModel> buscaAtendestes(AtendenteDTO atendenteDTO);
 
-    GerenteDTO novoGerente(AtendenteDTO atendenteDTO, boolean venda);
+    GerenteDTO novoGerente(AtendenteDTO atendenteDTO, boolean promocao);
 
     GerenteDTO buscaGerente(AtendenteDTO atendenteDTO);
 }

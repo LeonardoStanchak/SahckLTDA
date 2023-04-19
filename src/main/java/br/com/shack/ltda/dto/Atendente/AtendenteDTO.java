@@ -9,6 +9,8 @@ import lombok.Setter;
 @Builder
 public class AtendenteDTO {
 
+    private Integer id;
+
     private String nome;
     private String sobrenome;
     private int matricula;
