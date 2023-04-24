@@ -1,29 +1,28 @@
 package br.com.shack.ltda.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
-import org.springframework.data.annotation.Id;
 
 @Data
-@Entity
-@SuperBuilder
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "atendente")
+@Entity
 public class AtendenteModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     private String nome;
     private String sobrenome;
-    private int matricula;
+    @Column(unique = true)
+    private String cpf;
     private String cargo;
+    @Column(unique = true)
+    private int matricula;
+    private Long codigo;
 }
 

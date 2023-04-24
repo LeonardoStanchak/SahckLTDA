@@ -8,7 +8,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class AtendenteMapper {
 
-    public AtendenteModel toAttendant(AtendenteDTO atendenteDTO) {
+    public AtendenteDTO toAttendantDTO(AtendenteModel atendenteModel) {
+
+        return AtendenteDTO.builder()
+                .nome(atendenteModel.getNome())
+                .sobrenome(atendenteModel.getSobrenome())
+                .matricula(atendenteModel.getMatricula())
+                .cargo(atendenteModel.getCargo())
+                .codigo(atendenteModel.getCodigo())
+                .cpf(atendenteModel.getCpf())
+                .build();
+
+    }
+
+    public AtendenteModel toAttendantModel(AtendenteDTO atendenteDTO) {
 
         return AtendenteModel.builder()
                 .nome(atendenteDTO.getNome())
@@ -41,7 +54,7 @@ public class AtendenteMapper {
     public GerenteDTO toNewManager(AtendenteDTO atendenteDTO){
         return GerenteDTO.builder()
                 .dto(atendenteDTO)
-                .promocao(false)
+                .promocao(true)
                 .build();
     }
 
