@@ -3,6 +3,7 @@ package br.com.shack.ltda.mapper;
 import br.com.shack.ltda.dto.Atendente.AtendenteDTO;
 import br.com.shack.ltda.dto.Atendente.GerenteDTO;
 import br.com.shack.ltda.model.AtendenteModel;
+import br.com.shack.ltda.model.GerenteModel;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -51,16 +52,26 @@ public class AtendenteMapper {
 
     }
 
-    public GerenteDTO toNewManager(AtendenteDTO atendenteDTO){
-        return GerenteDTO.builder()
-                .dto(atendenteDTO)
-                .promocao(true)
+    public GerenteModel toNewManager(AtendenteDTO atendenteDTO, boolean promocao){
+        return GerenteModel.builder()
+                .nome(atendenteDTO.getNome())
+                .sobrenome(atendenteDTO.getSobrenome())
+                .matricula(atendenteDTO.getMatricula())
+                .cargo(atendenteDTO.getCargo())
+                .cpf(atendenteDTO.getCpf())
+                .codigo(atendenteDTO.getCodigo())
+                .promocao(promocao)
                 .build();
     }
 
-    public GerenteDTO toPromotedAttendant(AtendenteDTO atendenteDTO, boolean promocao){
-        return GerenteDTO.builder()
-                .dto(atendenteDTO)
+    public GerenteModel toPromotedAttendant(AtendenteDTO atendenteDTO, boolean promocao){
+        return GerenteModel.builder()
+                .nome(atendenteDTO.getNome())
+                .sobrenome(atendenteDTO.getSobrenome())
+                .matricula(atendenteDTO.getMatricula())
+                .cargo(atendenteDTO.getCargo())
+                .cpf(atendenteDTO.getCpf())
+                .codigo(atendenteDTO.getCodigo())
                 .promocao(promocao)
                 .build();
 

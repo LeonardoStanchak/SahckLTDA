@@ -3,7 +3,7 @@ package br.com.shack.ltda.service;
 import br.com.shack.ltda.dto.Atendente.AtendenteDTO;
 import br.com.shack.ltda.dto.Atendente.GerenteDTO;
 import br.com.shack.ltda.model.AtendenteModel;
-import org.springframework.stereotype.Service;
+import br.com.shack.ltda.model.GerenteModel;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public interface AtendenteService {
 
     List<AtendenteDTO> buscaAtentendes();
 
-    GerenteDTO novoGerente(AtendenteDTO atendenteDTO, boolean promocao);
+    GerenteModel novoGerente(AtendenteDTO atendenteDTO, boolean promocao);
 
     GerenteDTO buscaGerente();
 }

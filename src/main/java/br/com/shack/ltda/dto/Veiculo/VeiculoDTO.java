@@ -1,21 +1,20 @@
 package br.com.shack.ltda.dto.Veiculo;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class VeiculoDTO {
 
     private String marca;
     private String modelo;
     private String km;
     private String motor;
+    private String color;
 
-    private String valor;
-
-    private boolean vendido;
 
 }

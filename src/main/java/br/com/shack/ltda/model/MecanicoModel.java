@@ -11,19 +11,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "atendente_model")
-public class AtendenteModel {
+@Table(name = "mecanico_model")
+public class MecanicoModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long Id;
 
     private String nome;
     private String sobrenome;
     @Column(unique = true)
-    private String cpf;
+
+    private int matricula;
     private String cargo;
     @Column(unique = true)
-    private int matricula;
-    private Long codigo;
-}
 
+    private String cpf;
+    private Long codigo;
+    private String especialidade;
+}

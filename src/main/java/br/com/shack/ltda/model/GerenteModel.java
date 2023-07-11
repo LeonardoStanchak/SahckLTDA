@@ -1,5 +1,6 @@
 package br.com.shack.ltda.model;
 
+import br.com.shack.ltda.dto.Atendente.AtendenteDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,19 +12,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "atendente_model")
-public class AtendenteModel {
+@Table(name = "gerente_model")
+public class GerenteModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String nome;
     private String sobrenome;
-    @Column(unique = true)
-    private String cpf;
-    private String cargo;
-    @Column(unique = true)
     private int matricula;
-    private Long codigo;
-}
+    private String cargo;
 
+    private String cpf;
+
+    private Long codigo;
+
+    private boolean promocao;
+}

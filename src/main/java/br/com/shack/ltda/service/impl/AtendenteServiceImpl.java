@@ -47,9 +47,10 @@ public class AtendenteServiceImpl implements AtendenteService{
     }
 
     @Override
-    public GerenteDTO novoGerente(AtendenteDTO atendenteDTO, boolean promocao) {
+    public GerenteModel novoGerente(AtendenteDTO atendenteDTO, boolean promocao) {
         if (atendenteDTO.getCodigo() == 2) {
-            return atendenteMapper.toNewManager(atendenteDTO);
+            var novo = atendenteMapper.toNewManager(atendenteDTO, true);
+            return gerente.save(novo);
         } else {
             return atendenteMapper.toPromotedAttendant(atendenteDTO, promocao);
         }
@@ -58,7 +59,7 @@ public class AtendenteServiceImpl implements AtendenteService{
     @Override
     public GerenteDTO buscaGerente() {
         List<AtendenteModel> gerenteModels = atendenteRepository.findAll();
-        return gerenteModels.stream().map(gerenteModel -> gerenteMapper.toManagerDTO(gerenteModels)).collect(Collectors.toList());
+        return (GerenteDTO) gerenteModels.stream().map(gerenteModel -> gerenteMapper.toManagerDTO((AtendenteDTO) gerenteModels)).collect(Collectors.toList());
     }
 
 
