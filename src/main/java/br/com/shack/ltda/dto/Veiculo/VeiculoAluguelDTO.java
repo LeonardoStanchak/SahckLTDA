@@ -13,4 +13,7 @@ public class VeiculoAluguelDTO {
 
     private boolean alugado;
 
+    private boolean seraAlugado;
+
+
 }

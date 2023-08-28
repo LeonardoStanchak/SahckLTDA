@@ -15,6 +15,7 @@ public class VeiculoDTO {
     private String km;
     private String motor;
     private String color;
+    private String cambio;
 
 
 }
