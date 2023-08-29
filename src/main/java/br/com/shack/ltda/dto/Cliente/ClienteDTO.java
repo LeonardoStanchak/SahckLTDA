@@ -1,15 +1,18 @@
 package br.com.shack.ltda.dto.Cliente;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ClienteDTO {
 
     private String nome;
     private String sobrenome;
     private String cpf;
+    private int idade;
+
+    private boolean maiorDeIdade;
 }

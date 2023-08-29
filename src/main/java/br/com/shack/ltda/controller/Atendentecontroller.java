@@ -39,7 +39,7 @@ public class Atendentecontroller {
     }
 
     @PostMapping(value = "/novo/gerente")
-    public ResponseEntity<GerenteModel> novoGerente(@RequestBody AtendenteDTO atendenteDTO, boolean promocao) {
+    public ResponseEntity<GerenteModel> novoGerente(@RequestBody AtendenteDTO atendenteDTO, @RequestBody boolean promocao) {
         GerenteModel gerenteDTO = atendenteService.novoGerente(atendenteDTO, promocao);
         return ResponseEntity.status(HttpStatus.CREATED).body(gerenteDTO);
     }
